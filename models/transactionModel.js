@@ -8,6 +8,24 @@ const Category = require('../models/categoryModel');
 
 const transactionSchema = new mongoose.Schema({
   //Write your code here
+  type: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  amount: {
+    type: Number,
+    required: true,
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Transaction = mongoose.model('Transaction', transactionSchema);
